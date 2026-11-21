@@ -1,0 +1,14 @@
+# Build-Ergebnisse
+build/
+dist/
+__pycache__/
+*.pyc
+*.zip
+
+# Persönliche Daten – nie ins Repo
+res/config.json
+res/wochen/
+res/prospekte.json
+res/meine_rezepte.json
+res/*.log
+*.log

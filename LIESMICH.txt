@@ -1,0 +1,306 @@
+==========================================================
+  Essens-Plan  v1.5.3
+  Wochenplan aus den aktuellen Supermarkt-Angeboten
+==========================================================
+
+Die ausführliche Anleitung mit Erklärungen zu allen Funktionen
+steht in der Datei "Anleitung.pdf" (liegt im selben Ordner).
+
+
+WAS MACHT DAS PROGRAMM?
+-----------------------
+Essens-Plan lädt die Prospekt-Angebote der Supermärkte in deiner
+Umgebung (Aldi, Lidl, Rewe, Edeka, Kaufland, Penny, Netto und
+weitere) und baut daraus einen Wochenplan: möglichst viele
+Zutaten sind gerade im Angebot, und der Einkauf verteilt sich
+auf möglichst wenige Läden.
+Daraus entsteht eine fertige Einkaufsliste mit Preisen – zum
+Kopieren aufs Handy oder als PDF zum Ausdrucken.
+
+
+START
+-----
+Einfach "Essens-Plan.exe" doppelklicken. Eine Installation ist
+nicht nötig. Das Fenster öffnet immer maximiert.
+
+Beim ersten Start meldet sich eventuell der Windows-SmartScreen
+("Der Computer wurde durch Windows geschützt"). Das passiert bei
+jedem Programm ohne gekaufte Signatur.
+   -> "Weitere Informationen"  ->  "Trotzdem ausführen"
+
+
+IN 5 SCHRITTEN ZUM PLAN
+-----------------------
+1. Beim ersten Start öffnen sich zuerst die Einstellungen mit
+   einer Willkommen-Karte. Es wird noch nichts geladen, bevor
+   du etwas eingestellt hast.
+2. Postleitzahl eintragen (Pflicht), dazu Personenzahl und die
+   Anzahl der Läden.
+3. Händler anhaken, bei denen du einkaufst (z. B. "Lidl · 239
+   Angebote"). Nichts angehakt = alle Händler. Wenn du Apps wie
+   Lidl Plus oder Payback nutzt, die passenden Treue-Programme
+   anhaken – dann werden die App-Preise gerechnet.
+   Optional: Rabatt-Filter (siehe unten).
+4. "Speichern & Angebote laden": Das Programm holt die Angebote.
+   Das dauert je nach Region etwa eine halbe bis eine Minute.
+5. "Plan generieren" (F6) erstellt den Wochenplan. Im Tab
+   "Einkaufsliste" findest du alles zum Einkaufen.
+
+Später kannst du alles im Tab "Einstellungen" ändern - jede
+Änderung wird automatisch gespeichert - und die Angebote
+jederzeit mit F5 neu laden.
+
+Beim Zusammenstellen achtet die App auf Abwechslung: dieselbe
+Hauptzutat kommt nicht zweimal in einer Woche vor, zwei Tage
+hintereinander gibt es nicht dieselbe Beilage, und Gerichte der
+letzten beiden Wochen werden seltener gezogen. Favoriten dafür
+häufiger.
+
+
+HÄNDLER UND RABATT-FILTER
+-------------------------
+Händler: Jeder Händler hat ein Kästchen mit der Zahl der
+Angebote, z. B. "Lidl · 239 Angebote". Nur angehakte Händler
+werden berücksichtigt. Ist nichts angehakt, gelten alle.
+
+Hat ein Händler diese Woche nichts, steht dahinter, warum:
+  "kein Prospekt"          marktguru.de (die Angebotsquelle)
+                           hat gerade keinen aktuellen Prospekt.
+                           Das kann an marktguru liegen (dort
+                           fehlen manchmal Prospekte) oder der
+                           Händler hat keinen veröffentlicht.
+  "Prospekt ohne Angebote" Der Prospekt ist da, aber marktguru
+                           hat die Angebote nicht einzeln
+                           erfasst (z. B. oft bei ALDI).
+  "Prospekt kommt noch"    Der Prospekt für diese Woche ist
+                           noch nicht erschienen.
+Darunter steht dann die Karte "Kein aktueller Prospekt". Dort
+öffnet "Letzten Prospekt ansehen" (bzw. "Prospekt ansehen")
+den Prospekt im Browser - die Preise eines alten Prospekts
+gelten aber meist nicht mehr. Sind nur solche Händler
+angehakt, warnt das Programm auch in den Suchen - dann bitte
+weitere Händler anhaken oder alle Haken entfernen.
+
+Rabatt-Filter (optional): "Nur Angebote ab … % Rabatt anzeigen"
+(5 bis 90 %). Der Filter gilt für die Angebotsliste, den Plan
+und die Einkaufsliste.
+
+
+DER ESSENSPLAN
+--------------
+Einzelne Tage änderst du über die Auswahlliste an der Tageskarte
+oder mit "Neu" (würfelt diesen Tag neu).
+
+Tage hinzufügen und entfernen:
+  * "Tag hinzufügen" -> Wochentag wählen
+  * das "x" an der Tageskarte entfernt den Tag (mindestens ein
+    Tag bleibt immer stehen)
+Das gilt auch für die Einkaufsliste und das PDF.
+
+
+DIE EINKAUFSLISTE
+-----------------
+Jede Zeile hat einen Haken:
+  * angehakt = kommt auf die Einkaufsliste
+  * nicht angehakt = habe ich schon da (z. B. Pfeffer); die
+    Zeile wird grau und zählt nicht zur Summe, zum Kopieren
+    und zum PDF
+Zutaten, die als Vorrat gelten, sind anfangs nicht angehakt.
+Umschalten mit Klick, Doppelklick oder Leertaste.
+
+"Artikel hinzufügen": Ins Feld über der Liste eintippen, was
+du brauchst - eine Sorte wie "Duschgel" oder "Deo" oder eine
+Marke wie "Axe" - und Enter drücken. Essens-Plan sucht zuerst
+bei deinen Händlern nach Angeboten (alle Sorten und Marken,
+Schreibweise und kleine Tippfehler egal):
+  * Angebote gefunden: Angebot anklicken und "Angebot
+    übernehmen" - es kommt mit Preis auf die Liste. Passt
+    nichts, setzt "Ohne Angebot aufschreiben" nur den Namen
+    ohne Preis auf die Liste.
+  * Kein Angebot: Das Programm sagt es dir und fragt, ob der
+    Artikel ohne Preis auf die Liste soll. Mit "Nicht mehr
+    fragen" wird er künftig sofort aufgeschrieben (wieder
+    einschalten: Einstellungen -> "Ohne Angebot nachfragen").
+Mehr Platz und Auswahl bietet der Reiter "Angebot raussuchen"
+(siehe unten).
+
+"Notiz hinzufügen": freier Text, z. B. "Geburtstagskarte".
+
+Extras und Notizen stehen in der letzten Gruppe "Extras &
+Notizen". Entfernen mit Entf oder Rechtsklick -> Entfernen.
+
+Zum Mitnehmen: "Kopieren" für die Zwischenablage oder
+"PDF drucken" (Strg+P) für den Ausdruck.
+
+
+ANGEBOT RAUSSUCHEN
+------------------
+Der Reiter "Angebot raussuchen" (Strg+2) sucht gezielt nach
+einem Artikel - in drei Schritten, die oben im Reiter stehen:
+  1. Eintippen, was du brauchst: eine Sorte wie "Duschgel",
+     eine Marke wie "Axe" oder einen Oberbegriff wie "Obst",
+     "Fleisch" oder "Alkohol". Groß/klein und kleine
+     Tippfehler sind egal, "Deo" und "Axe" finden beide die
+     Deo-Angebote. Die Knöpfe unter dem Feld (Brot, Obst,
+     Klopapier, Katzenstreu ...) suchen mit einem Klick.
+  2. Angebot anklicken. Oben stehen die passenden Angebote
+     deiner Händler, die besten zuerst. Darunter stehen
+     ähnliche Produkte, die gerade stark reduziert sind (ab
+     25 % billiger als sonst) - z. B. eine andere Marke.
+  3. "Auf die Einkaufsliste" drücken (oder doppelt klicken).
+     Ein Haken (✔) zeigt: steht schon auf deiner Liste.
+Gibt es kein Angebot, sagt das Programm es dir und fragt, ob
+der Artikel ohne Preis auf die Liste soll (mit "Nicht mehr
+fragen", wie bei "Artikel hinzufügen").
+Ist das Feld leer, zeigt der Reiter die stärksten Rabatte der
+Woche. Der Knopf "So geht's" erklärt alles noch einmal.
+
+
+ANGEBOTE
+--------
+Im Tab "Alle Angebote" siehst du alle geladenen Angebote, mit
+Filtern für Händler, Kategorie und Suche. Ist der Rabatt-Filter
+eingeschaltet, erscheinen nur Angebote ab dem eingestellten
+Prozentwert.
+Neue Prospekte erscheinen meist ab Sonntag für die kommende
+Woche. Darum zeigt das Programm sonntags schon die neue Woche;
+zur laufenden Woche geht es mit dem linken Pfeil neben der
+Wochenanzeige.
+Die Suche kennt Sorten, Marken und Schreibweisen: "Deo" und
+"Axe" finden beide die Deo-Angebote. Oberbegriffe wie
+"Alkohol", "Obst", "Gemüse", "Brot", "Süßigkeiten" oder
+"Tierfutter" finden alles aus den passenden Prospekt-
+Kategorien, auch ohne das Wort im Namen. Mit Suchbegriff wird in
+allen Branchen gesucht (auch Drogerie). Bei Tippfehlern kommt
+"Meintest du ...?".
+
+
+EIGENE GERICHTE
+---------------
+Mitgeliefert sind rund 130 alltagstaugliche Gerichte mit Zutaten,
+Zubereitungszeit und Kochanleitung - von Spaghetti Bolognese über
+Rindergulasch und Ofenlachs bis Kaiserschmarrn.
+
+Im Tab "Gerichte" steckt die komplette Rezeptdatenbank:
+  * Suche und Filter (Favoriten, Kategorien, eigene Gerichte)
+  * "Neues Gericht" für eigene Rezepte
+  * Bearbeiten, Duplizieren, Löschen (mit Papierkorb)
+  * Favoriten werden beim Planen bevorzugt, pausierte Gerichte
+    werden nie eingeplant
+  * "Einplanen" legt ein Gericht direkt auf einen Wochentag
+
+Mengen bitte immer für 2 Personen eintragen – die App rechnet sie
+auf deine Personenzahl hoch.
+Die "Suchbegriffe" einer Zutat bestimmen, wonach in den Angeboten
+gesucht wird (mehrere mit | trennen, z. B. hackfleisch|rinderhack).
+Ein Haken bei "Vorrat" heißt: habe ich zu Hause, nicht suchen.
+
+Die mitgelieferte Grunddatenbank wird nie überschrieben. Deine
+Änderungen liegen getrennt davon und lassen sich jederzeit über
+"Original" zurücksetzen.
+
+
+TASTENKÜRZEL
+------------
+F5           Angebote laden (scannen)
+F6           Plan generieren
+Strg+P       PDF exportieren
+Strg+Links   eine Woche zurück
+Strg+Rechts  eine Woche vor
+Strg+1..6    Tab wechseln (Strg+2 = Angebot raussuchen)
+Leertaste    Haken in der Einkaufsliste umschalten
+Entf         Extra oder Notiz entfernen
+
+
+WO LIEGEN MEINE DATEN?
+----------------------
+Wenn der Ordner der EXE beschreibbar ist (z. B. USB-Stick oder
+eigener Ordner), liegt alles daneben in "res\":
+   res\config.json        deine Einstellungen
+   res\meine_rezepte.json deine Gerichte und Favoriten
+   res\wochen\*.json      Angebote und Pläne je Kalenderwoche
+
+Liegt das Programm in "Programme\" (dort darf nichts geschrieben
+werden), wandern die Daten automatisch nach
+   %APPDATA%\Essens-Plan
+Den richtigen Ordner öffnet immer:  Menü "Datei" -> "Datenordner öffnen".
+
+Sichern: "Datei" -> "Rezepte sichern…" schreibt alle Gerichte in
+eine JSON-Datei, "Rezepte importieren…" liest sie wieder ein –
+so nimmst du deine Rezepte auf einen anderen PC mit.
+
+
+ANSICHT
+-------
+Das Programm startet im dunklen Design. Menü "Ansicht" schaltet
+zwischen dunklem und hellem Design (helles Grau) um; das Fenster
+startet danach neu.
+
+Hinweise: Hältst du die Maus kurz über einen Knopf oder ein
+Feld, erscheint eine kurze Erklärung. Leere Listen zeigen dir,
+was als Nächstes zu tun ist (z. B. Postleitzahl eintragen,
+Angebote laden, Plan generieren). Die
+Oberfläche passt sich der Windows-Skalierung an und ist von
+100 % bis 200 % getestet.
+
+Kleine Bildschirme (z. B. Laptop mit 1366 x 768): Das Band
+ganz oben fällt weg und alles rückt enger zusammen. Den Knopf
+für Hell/Dunkel findest du dann in der Leiste oben rechts - ist
+auch dafür kein Platz, im Menü "Ansicht".
+
+Alles zu klein oder zu groß, z. B. auf einem 4K-Bildschirm?
+Tab "Einstellungen" -> Karte "Größe": bei "Größe der Oberfläche"
+"Automatisch" lassen oder einen festen Wert wählen (100 % bis
+300 %, wird automatisch gespeichert). Die neue Größe gilt nach
+einem Neustart des Programms.
+
+
+UPDATES
+-------
+Solange kein GitHub-Projekt eingetragen ist, sucht das Programm
+nirgends nach Updates. Wer neue Versionen über GitHub bekommt,
+trägt im Tab "Einstellungen" in der Karte "Update" das GitHub-
+Projekt ein (benutzer/projekt). Dann sieht das Programm beim
+Start still nach (abschaltbar), und "Nach Updates suchen" (auch
+im Menü "Hilfe") findet die neueste Version, lädt sie nach
+Rückfrage und tauscht die EXE aus. Klappt der Tausch nicht,
+bleibt die bisherige EXE erhalten. Deine Daten bleiben in jedem
+Fall unberührt.
+
+
+HINWEISE
+--------
+* Angebotsdaten kommen von marktguru.de. Preise und Verfügbarkeit
+  ohne Gewähr – im Zweifel gilt der Aushang im Laden.
+* Mit "~" markierte Preise sind geschätzt (aus dem Durchschnitts-
+  Grundpreis der Kategorie), weil der Prospekt keine Menge nennt.
+* Für das Laden der Angebote wird eine Internetverbindung
+  gebraucht, sonst nicht.
+* Das Programm sendet keine persönlichen Daten; die Postleitzahl
+  wird nur für die regionale Angebotssuche verwendet.
+
+
+PROBLEME?
+---------
+"Keine Angebote gefunden"
+   Prospekte erscheinen meist ab Sonntag für die kommende Woche.
+   PLZ prüfen und erneut laden (F5). Auch prüfen, ob der Rabatt-
+   Filter zu hoch eingestellt ist.
+Bei einem Händler (z. B. Kaufland) wird nichts gefunden
+   marktguru.de hat für diesen Händler gerade keinen aktuellen
+   Prospekt. Das kann an marktguru liegen oder der Händler hat
+   keinen veröffentlicht - im Tab "Einstellungen" steht dann
+   bei ihm "kein Prospekt". Den letzten Prospekt öffnet dort
+   "Letzten Prospekt ansehen". Für die Suche solange weitere
+   Händler anhaken oder alle Haken entfernen (= alle Händler).
+"PDF ist noch geöffnet"
+   Das PDF im Reader schließen und erneut exportieren.
+Gericht taucht nie im Plan auf
+   Im Tab "Gerichte" prüfen, ob es pausiert ist oder ob der Filter
+   "Nur vegetarisch" in den Einstellungen es ausschließt.
+"Unerwarteter Fehler"
+   Sollte nicht vorkommen. Die Einzelheiten stehen in der Datei
+   "fehler.log" im Datenordner ("Datei" -> "Datenordner öffnen") –
+   die hilft bei der Fehlersuche.
+
+Viel Spaß beim Sparen!
