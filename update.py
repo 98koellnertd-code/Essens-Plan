@@ -11,6 +11,7 @@ Zwei Betriebsarten, weil beide etwas völlig anderes brauchen:
 
 Geladen wird ausschließlich über HTTPS von GitHub, und niemals ohne Rückfrage.
 """
+import hashlib
 import json
 import os
 import re
@@ -33,6 +34,12 @@ MIN_PYTHON = (3, 9)
 PYTHON_URL = "https://www.python.org/downloads/"
 TIMEOUT = 20
 KEIN_FENSTER = 0x08000000
+SUMMEN_NAME = "sha256sums.txt"        # Release-Datei mit den Prüfsummen (Format wie sha256sum)
+SUMMEN_MAX = 64 * 1024                # mehr als ein paar Zeilen steht dort nie drin
+FEHLER_PRUEFSUMME = ("Die geladene Datei ist beschädigt oder verändert – das Update wurde "
+                     "abgebrochen. Bitte später erneut versuchen.")
+FEHLER_OHNE_SUMME = ("Zu dieser Version gibt es keine Prüfsumme – aus Sicherheitsgründen wurde "
+                     "das Update abgebrochen. Bitte später erneut versuchen.")
 
 
 # ─── Versionen ────────────────────────────────────────────────────────────────
@@ -96,9 +103,16 @@ def check(repo_text, aktuelle_version):
         raise RuntimeError("Die Antwort von GitHub war unlesbar.")
 
     exe = None
-    for a in d.get("assets") or []:
+    summen = ""
+    assets = d.get("assets") or []
+    for a in assets:
+        if str(a.get("name", "")).lower() == SUMMEN_NAME and _sicher(a.get("browser_download_url")):
+            summen = a["browser_download_url"]
+            break
+    for a in assets:
         if str(a.get("name", "")).lower().endswith(".exe") and _sicher(a.get("browser_download_url")):
-            exe = {"name": a["name"], "url": a["browser_download_url"], "size": a.get("size") or 0}
+            exe = {"name": a["name"], "url": a["browser_download_url"], "size": a.get("size") or 0,
+                   "sums_url": summen, "digest": str(a.get("digest") or "")}
             break
     tag = d.get("tag_name") or d.get("name") or ""
     return {"repo": repo, "tag": tag, "version": ".".join(str(z) for z in ver(tag)),
@@ -116,13 +130,65 @@ def _weg(pfad):
         pass
 
 
-def download(asset, ziel, prog=None, exe=True):
+def _hex_aus_digest(digest):
+    """„sha256:abc…“ (Feld digest der GitHub-API) → „abc…“; alles andere → ""."""
+    m = re.fullmatch(r"sha256:([0-9a-fA-F]{64})", str(digest or "").strip())
+    return m.group(1).lower() if m else ""
+
+
+def summen_lesen(text):
+    """Liest eine SHA256SUMS-Datei („<hex>  <name>“, auch „<hex> *<name>“) → {name: hex}."""
+    out = {}
+    for z in str(text or "").lstrip(chr(0xFEFF)).splitlines():
+        m = re.fullmatch(r"\s*([0-9a-fA-F]{64})\s+\*?(.+?)\s*", z)
+        if m:
+            out[m.group(2)] = m.group(1).lower()
+    return out
+
+
+def _summe_holen(asset):
+    """Lädt SHA256SUMS.txt und gibt die Prüfsumme für die EXE zurück (wirft RuntimeError)."""
+    url = asset.get("sums_url")
+    if not url:
+        raise RuntimeError(FEHLER_OHNE_SUMME)
+    if not _sicher(url):
+        raise RuntimeError("Die Adresse der Prüfsumme gehört nicht zu GitHub – abgebrochen.")
+    try:
+        with requests.get(url, stream=True, timeout=TIMEOUT,
+                          headers={"User-Agent": "Essens-Plan"}) as r:
+            r.raise_for_status()
+            if not _sicher(getattr(r, "url", url)):
+                raise RuntimeError("Die Prüfsumme kam nicht von GitHub – abgebrochen.")
+            roh = b""
+            for stueck in r.iter_content(8192):
+                roh += stueck
+                if len(roh) > SUMMEN_MAX:
+                    raise RuntimeError(FEHLER_OHNE_SUMME)
+    except requests.RequestException as e:
+        raise RuntimeError(f"Die Prüfsumme konnte nicht geladen werden ({e}). "
+                           "Bitte später erneut versuchen.")
+    summen = summen_lesen(roh.decode("utf-8", "replace"))
+    soll = summen.get(asset.get("name"))
+    if not soll:
+        raise RuntimeError(FEHLER_OHNE_SUMME)
+    return soll
+
+
+def download(asset, ziel, prog=None, exe=True, pruefen=True):
     """Lädt das Release-Paket nach ziel. prog(geladen, gesamt) darf None sein.
 
-    exe=False ist nur zum Testen da – dann entfällt die Prüfung auf ein Windows-Programm."""
+    Danach wird die SHA-256-Prüfsumme gegen SHA256SUMS.txt aus dem Release (und, falls
+    vorhanden, gegen das Feld „digest“ der GitHub-API) geprüft. Fehlt sie oder weicht sie ab,
+    wird die Datei gelöscht und RuntimeError geworfen.
+
+    exe=False ist nur zum Testen da – dann entfällt die Prüfung auf ein Windows-Programm.
+    pruefen=False (nur Tests) schaltet die Prüfsumme ab."""
     if not _sicher(asset.get("url")):
         raise RuntimeError("Die Download-Adresse gehört nicht zu GitHub – abgebrochen.")
+    soll = _summe_holen(asset) if pruefen else ""          # vor dem großen Download: früh scheitern
+    digest = _hex_aus_digest(asset.get("digest")) if pruefen else ""
     gesamt, geladen = int(asset.get("size") or 0), 0
+    h = hashlib.sha256()
     with requests.get(asset["url"], stream=True, timeout=TIMEOUT,
                       headers={"User-Agent": "Essens-Plan"}) as r:
         r.raise_for_status()
@@ -130,12 +196,18 @@ def download(asset, ziel, prog=None, exe=True):
         with open(ziel, "wb") as f:
             for stueck in r.iter_content(256 * 1024):
                 f.write(stueck)
+                h.update(stueck)
                 geladen += len(stueck)
                 if prog:
                     prog(geladen, gesamt)
     if gesamt and os.path.getsize(ziel) != gesamt:
         _weg(ziel)
         raise RuntimeError("Der Download ist unvollständig – bitte erneut versuchen.")
+    if pruefen:
+        ist = h.hexdigest()
+        if ist != soll or (digest and ist != digest):
+            _weg(ziel)
+            raise RuntimeError(FEHLER_PRUEFSUMME)
     if exe:
         with open(ziel, "rb") as f:
             kopf = f.read(2)                         # erst schließen, dann löschen

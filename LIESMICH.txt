@@ -303,4 +303,12 @@ Gericht taucht nie im Plan auf
    "fehler.log" im Datenordner ("Datei" -> "Datenordner öffnen") –
    die hilft bei der Fehlersuche.
 
+PRÜFSUMMEN
+----------
+Zu jeder Version auf GitHub gehört die Datei SHA256SUMS.txt. Das
+automatische Update vergleicht damit die geladene Datei und bricht
+ab, wenn sie beschädigt oder verändert ist. Von Hand prüfen:
+   certutil -hashfile Essens-Plan.exe SHA256
+Der Wert muss dem Eintrag in SHA256SUMS.txt entsprechen.
+
 Viel Spaß beim Sparen!
