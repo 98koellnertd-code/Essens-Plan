@@ -25,7 +25,7 @@ import update as up
 import raussuchen
 
 APP_NAME = "Essens-Plan"
-APP_VERSION = "1.5.3"
+APP_VERSION = "1.6.0"
 TABS = ("Alle Angebote", "Angebot raussuchen", "Essensplan", "Einkaufsliste", "Gerichte", "Einstellungen")
 T_ANGEBOTE, T_SUCHE, T_PLAN, T_LISTE, T_GERICHTE, T_EINST = range(len(TABS))
 NB = " "   # geschütztes Leerzeichen: Angebots-Chips nicht mitten im Chip umbrechen
@@ -124,6 +124,8 @@ class App(tk.Tk):
         self._set_icon()
 
         self.cfg = CONFIG
+        if not self.cfg.get("update_repo"):          # leer = offizielles Projekt
+            self.cfg["update_repo"] = utils.DEFAULT_CONFIG["update_repo"]
         self.store = db.Store()
         self.recipes = self.store.all()
         self.year, self.kw = planwoche()
@@ -680,11 +682,16 @@ class App(tk.Tk):
             tv.heading(key, text=title, anchor=anchor, command=lambda k=key, t=tv: self._sort(t, k))
             tv.column(key, width=S(w), minwidth=S(40), anchor=anchor, stretch=key in flex)
 
-        def fit(e):
-            room = e.width - 4 - sum(w for k, w in tv._widths.items() if k not in flex)
+        def fit(e=None):
+            # nur die sichtbaren Spalten zählen (displaycolumns kann einzelne ausblenden)
+            shown = tv["displaycolumns"]
+            shown = set(tv["columns"]) if not shown or shown[0] == "#all" else set(shown)
+            width = e.width if e is not None else tv.winfo_width()
+            room = width - 4 - sum(w for k, w in tv._widths.items() if k not in flex and k in shown)
             share = sum(tv._widths[k] for k in flex)
             for k in flex:
                 tv.column(k, width=max(S(60), room * tv._widths[k] // share))
+        tv._fit = fit if flex else (lambda e=None: None)
         if flex:
             tv.bind("<Configure>", fit, add="+")
         sb = FlatScrollbar(body, tv.yview, bg=C["surface"])

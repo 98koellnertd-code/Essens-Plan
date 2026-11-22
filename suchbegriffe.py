@@ -121,6 +121,21 @@ _TYPEN = {
     "cola": ("cola colagetrank", "Softdrinks", "coca cola pepsi fritz", "colada", True),
     "bier": ("bier pils pilsener weizen helles radler", "Bier",
              "krombacher becks warsteiner bitburger veltins oettinger paulaner erdinger", "", True),
+    "wasser": ("wasser mineralwasser tafelwasser heilwasser", "Wasser",
+               "gerolsteiner volvic vio apollinaris adelholzener vittel evian saskia",
+               "kocher filter rasierwasser gesichtswasser mundwasser spender pistole kanister bett ball "
+               "sprudler flasche kissen waage", True),
+    "saft": ("saft safte fruchtsaft orangensaft apfelsaft multivitaminsaft schorle apfelschorle nektar "
+             "smoothie", "Softdrinks", "hohes c granini valensina rauch amecke beckers bester",
+             "schinken saftig nektarine presse", True),
+    "limonade": ("limonade limo brause eistee", "Softdrinks", "fanta sprite mezzo mix schweppes lipton",
+                 "limoncello dusch tablette", True),
+    "energydrink": ("energydrink energy energydrinks", "Softdrinks", "red bull redbull monster rockstar "
+                    "effect booster", "", True),
+    "krauter": ("krauter basilikum petersilie schnittlauch minze dill rosmarin thymian koriander salbei "
+                "oregano krautertopf kuchenkrauter gartenkrauter tkkrauter", "Kräuter",
+                "", "likor butter quark frischkase kase tee bonbon bonbons schnaps bitter dip creme "
+                "shampoo dusche duschgel seife pesto gurke honig", True),
     "eier": ("eier ei freilandeier bodenhaltung", "Eier", "", "", True),
     "butter": ("butter sussrahmbutter sauerrahmbutter", "Butter", "kerrygold meggle landliebe", "", True),
     "milch": ("milch vollmilch frischmilch hmilch", "Milch", "landliebe weihenstephan barenmarke",
@@ -235,7 +250,7 @@ _MARKEN_MEHR = {
     "damenhygiene": ("bella facelle tena camelia liasan naturella kotex natracare tampax bodyform "
                      "cien lea"),
     "toilettenpapier": ("alouette favora cottonelle goldeimer kokett lambi servus fripa softis "
-                        "kleenex regina"),
+                        "kleenex regina hakle"),
     "kuchenrolle": "alouette favora floralys kokett fripa lambi regina servus vileda",
     "taschentucher": "lea domol floralys kokett alouette fripa",
     "waschmittel": "vanish domol beckmann ecover purex dalli denkmit paradies kuschelweich lea",
@@ -263,10 +278,11 @@ _MARKEN_MEHR = {
              "schultheiss holzkirchner gosser stortebeker radeberger carlsberg corona desperados "
              "franziskaner hacker pschorr lowenbrau augustiner hofbrau tegernseer kulmbacher "
              "flensburger clausthaler benediktiner astra holsten bernard grolsch guinness leffe "
-             "hoegaarden kolsch gaffel reissdorf wernesgruner freiberger bischoff"),
+             "hoegaarden kolsch gaffel reissdorf wernesgruner freiberger bischoff kostritzer "
+             "radeberger hasseroder"),
     "butter": "latta arla anchor president milbona alnatura weidegluck",
     "milch": "muller sachsenmilch milram berchtesgadener oatly alpro schwarzwaldmilch arla",
-    "katzenstreu": "biokat catsan chicopee tigerino tierfreund vitakraft sanicat",
+    "katzenstreu": "biokat catsan chicopee tigerino tierfreund vitakraft sanicat cats best catsbest",
     "katzenfutter": ("whiskas sheba felix kitekat purina dreamies animonda carny rinti miamor "
                      "schmusy bozita applaws canin brekkies carno cosma catessy vitakraft multifit "
                      "selectgold winston bosch petfood sanabelle smilla josera iams eukanuba catz "
@@ -340,7 +356,7 @@ _ANZEIGE = {"spulung": "Spülung", "zahnburste": "Zahnbürste", "mundspulung": "
             "brotchen": "Brötchen", "bodylotion": "Bodylotion & Creme", "getranke": "Getränke",
             "kase": "Käse", "obst": "Obst", "gemuse": "Gemüse", "sussigkeiten": "Süßigkeiten",
             "tiefkuhl": "Tiefkühlware", "gewurze": "Gewürze", "musli": "Müsli", "parfum": "Parfüm",
-            "aufstrich": "Brotaufstrich"}
+            "aufstrich": "Brotaufstrich", "krauter": "Kräuter", "energydrink": "Energydrink"}
 
 # Verwandte Sorten: Wer Duschgel sucht, dem hilft vielleicht auch eine stark reduzierte Seife.
 _BEREICHE = {
@@ -354,7 +370,7 @@ _BEREICHE = {
     "Kaffee & Tee": "kaffee tee",
     "Milchprodukte": "sahne quark joghurt butter milch",
     "Knabbern & Naschen": "schokolade chips",
-    "Getränke": "cola bier",
+    "Getränke": "cola bier wasser saft limonade energydrink",
 }
 BEREICH = {s: b for b, ss in _BEREICHE.items() for s in ss.split()}
 

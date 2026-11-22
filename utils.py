@@ -47,6 +47,7 @@ DATA_DIR     = _data_dir()
 RES_DIR      = DATA_DIR                                          # Altname
 CONFIG_FILE  = os.path.join(DATA_DIR, "config.json")
 WEEKS_DIR    = os.path.join(DATA_DIR, "wochen")
+GESEHEN_FILE = os.path.join(DATA_DIR, "gesehen.json")                # „neu seit dem letzten Besuch“
 RECIPES_USER = os.path.join(DATA_DIR, "meine_rezepte.json")      # eigene Änderungen
 RECIPES_BASE = os.path.join(_BUNDLE_DIR, "res", "rezepte.json")  # gebündelte Grunddatenbank
 RECIPES_OLD  = os.path.join(DATA_DIR, "rezepte.json")            # Format vor v1.2
@@ -57,7 +58,12 @@ DEFAULT_CONFIG = {"ui_theme": "dark", "ui_scale": 0, "plz": "", "personen": 2,
                   "haendler": [], "vegetarisch": False, "max_laeden": 2, "programme": [],
                   "pdf_rezepte": True, "abwechslung": True, "artikel_fragen": True,
                   "rabatt_filter": False, "min_rabatt": 20,
-                  "update_repo": "", "update_auto": True}
+                  "update_repo": "98koellnertd-code/Essens-Plan", "update_auto": True,
+                  # Reiter „Angebot raussuchen“: Händler (leer = alle angehakten), Mindest-Rabatt (0 = aus),
+                  # Sortierung, Alkohol-Schalter bei Getränken; „meine_marken“ füllt raussuchen.py beim
+                  # ersten Start mit der Vorgabe-Liste (None = noch nie bearbeitet)
+                  "raussuchen_haendler": [], "raussuchen_min_rabatt": 0, "raussuchen_sortierung": "rabatt",
+                  "raussuchen_alkohol": "beides", "meine_marken": None}
 
 
 def load_json(path, default):

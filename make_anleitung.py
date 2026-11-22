@@ -17,7 +17,7 @@ from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (BaseDocTemplate, CondPageBreak, Flowable, Frame, KeepTogether, NextPageTemplate,
                                 PageTemplate, Paragraph, Spacer, Table, TableStyle)
 
-VERSION = "1.5.3"
+VERSION = "1.6.0"
 TITEL = "Essens-Plan"
 UNTERTITEL = "Wochenplan aus den aktuellen Supermarkt-Angeboten"
 
@@ -571,6 +571,20 @@ def story():
         "Einkaufsliste soll – mit <b>Nicht mehr fragen</b>, genau wie bei „Artikel hinzufügen“.",
         "<b>Feld leer:</b> Dann zeigt der Reiter die stärksten Rabatte der Woche bei deinen Händlern.",
         "Der Knopf <b>So geht's</b> erklärt alles noch einmal.",
+    ]))
+    A(P("<b>Schneller durch die Angebote:</b>"))
+    A(bullets([
+        "<b>Kategorien:</b> Die runde Knopfleiste unter dem Feld zeigt eine ganze Abteilung – Getränke, "
+        "Kaffee &amp; Tee, Süßes, Fleisch, Fisch, Obst &amp; Gemüse, Kräuter &amp; Gewürze, Milch &amp; Käse, "
+        "Brot, Tiefkühl, Drogerie, Haushalt, Tier. Was du eintippst, sucht dann nur noch darin.",
+        "<b>Getränke:</b> mit oder ohne Alkohol, nach Sorte (Bier, Wasser, Energy …) und mit Marken-Knöpfen.",
+        "<b>⭐ Top-Deals</b> (Schnäppchen-Radar): Kisten, Träger, Großpackungen, deine Marken und starke "
+        "Rabatte – jeweils mit Grund und Preis je Liter oder Kilo. Unter <b>Meine Marken</b> legst du fest, "
+        "welche Marken zählen.",
+        "<b>Händler, Mindest-Rabatt und Sortierung</b> (Rabatt, Preis, Händler) stellst du direkt im Reiter "
+        "ein; sie bleiben gespeichert.",
+        "<b>Nur neue</b> zeigt, was seit deinem letzten Besuch dazugekommen ist (in der Liste mit „NEU“).",
+        "<b>Mehrere auf einmal:</b> mit Strg oder Umschalt anklicken, dann <b>Auf die Einkaufsliste</b>.",
     ]))
 
     # Angebote

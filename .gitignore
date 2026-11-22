@@ -12,3 +12,4 @@ res/prospekte.json
 res/meine_rezepte.json
 res/*.log
 *.log
+res/gesehen.json

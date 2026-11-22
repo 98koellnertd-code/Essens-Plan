@@ -6,8 +6,20 @@ fehlt oder leer ist. Die Prüfsummentabelle hängt das Skript selbst an – nich
 
 ## 1.6.0
 
-<!-- Noch nichts eingetragen. Hier unter „### Neu“ / „### Kleinigkeiten“ die Änderungen sammeln;
-     dieser Kommentar zählt nicht als Text. -->
+### Neu
+- **Kategorien in „Angebot raussuchen“**: eine Knopfleiste mit runden Symbolen für Getränke, Kaffee & Tee, Süßes & Snacks, Fleisch & Wurst, Fisch, Obst & Gemüse, Kräuter & Gewürze, Milch & Käse, Brot & Backwaren, Tiefkühl, Drogerie, Haushalt und Tier. Das Suchfeld sucht dann nur noch in der gewählten Kategorie.
+- **Getränke** lassen sich nach Alkohol (mit, ohne, beides), Sorte und Marke filtern.
+- **⭐ Top-Deals – der Schnäppchen-Radar** zeigt Kisten, Träger, Großpackungen, deine Marken und stark reduzierte Ware. Jeder Vorschlag nennt seinen Grund und den Preis je Liter oder Kilo. Unter **Meine Marken** stellst du ein, welche Marken zählen.
+- **Händler, Mindest-Rabatt und Sortierung** (Rabatt, Preis, Händler) stellst du direkt im Reiter ein; die Einstellung bleibt gespeichert.
+- **„Nur neue“** zeigt die Angebote, die seit dem letzten Besuch dazugekommen sind. In der Liste sind sie mit „NEU“ markiert.
+- **Mehrere Angebote auf einmal** auf die Einkaufsliste: mit Strg oder Umschalt auswählen.
+- **73 neue Gerichte** (jetzt 203).
+- **Update prüft SHA-256-Prüfsummen**: Ein Update wird nur installiert, wenn die Datei unverändert angekommen ist.
+
+### Kleinigkeiten
+- Neue Spalte „Je Liter/kg“ in „Angebot raussuchen“.
+- Klopapier, Küchenrolle, Katzenstreu und Kräuter werden zuverlässiger gefunden.
+- Anleitung und LIESMICH beschreiben die neuen Funktionen.
 
 ## 1.5.3
 

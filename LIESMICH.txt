@@ -1,5 +1,5 @@
 ==========================================================
-  Essens-Plan  v1.5.3
+  Essens-Plan  v1.6.0
   Wochenplan aus den aktuellen Supermarkt-Angeboten
 ==========================================================
 
@@ -154,6 +154,25 @@ der Artikel ohne Preis auf die Liste soll (mit "Nicht mehr
 fragen", wie bei "Artikel hinzufügen").
 Ist das Feld leer, zeigt der Reiter die stärksten Rabatte der
 Woche. Der Knopf "So geht's" erklärt alles noch einmal.
+
+Schneller durch die Angebote:
+- Kategorien: Die runde Knopfleiste unter dem Feld zeigt eine
+  ganze Abteilung (Getränke, Kaffee & Tee, Süßes, Fleisch,
+  Fisch, Obst & Gemüse, Kräuter & Gewürze, Milch & Käse, Brot,
+  Tiefkühl, Drogerie, Haushalt, Tier). Was du eintippst,
+  sucht dann nur noch darin.
+- Getränke: mit/ohne Alkohol, Sorte (Bier, Wasser, Energy ...)
+  und Marken-Knöpfe.
+- Top-Deals (Schnäppchen-Radar): Kisten, Träger, Großpackungen,
+  deine Marken und starke Rabatte - jeweils mit Grund und Preis
+  je Liter/kg. "Meine Marken" legt fest, welche Marken zählen.
+- Händler, Mindest-Rabatt und Sortierung (Rabatt, Preis,
+  Händler) stellst du direkt im Reiter ein; sie bleiben
+  gespeichert.
+- "Nur neue" zeigt, was seit deinem letzten Besuch dazukam
+  (in der Liste mit "NEU" markiert).
+- Mehrere Angebote auf einmal: mit Strg oder Umschalt
+  anklicken, dann "Auf die Einkaufsliste".
 
 
 ANGEBOTE

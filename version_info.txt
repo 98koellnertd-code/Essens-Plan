@@ -1,8 +1,8 @@
 # Versionsinfos für die EXE (PyInstaller: --version-file version_info.txt)
 VSVersionInfo(
   ffi=FixedFileInfo(
-    filevers=(1, 5, 3, 0),
-    prodvers=(1, 5, 3, 0),
+    filevers=(1, 6, 0, 0),
+    prodvers=(1, 6, 0, 0),
     mask=0x3f,
     flags=0x0,
     OS=0x40004,
@@ -16,12 +16,12 @@ VSVersionInfo(
         '040704b0',
         [StringStruct('CompanyName', 'Essens-Plan'),
          StringStruct('FileDescription', 'Essens-Plan – Wochenplaner mit Supermarkt-Angeboten'),
-         StringStruct('FileVersion', '1.5.3.0'),
+         StringStruct('FileVersion', '1.6.0.0'),
          StringStruct('InternalName', 'Essens-Plan'),
          StringStruct('LegalCopyright', 'Frei nutzbar – Angebotsdaten von marktguru.de'),
          StringStruct('OriginalFilename', 'Essens-Plan.exe'),
          StringStruct('ProductName', 'Essens-Plan'),
-         StringStruct('ProductVersion', '1.5.3.0')])
+         StringStruct('ProductVersion', '1.6.0.0')])
     ]),
     VarFileInfo([VarStruct('Translation', [1031, 1200])])
   ]
