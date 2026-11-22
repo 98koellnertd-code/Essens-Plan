@@ -147,7 +147,8 @@ def git_pruefen(version, remote, erlaube_dreckig, publish):
 # ─── Bauen ────────────────────────────────────────────────────────────────────
 def bauen():
     env = dict(os.environ, EP_NOPAUSE="1")
-    p = subprocess.run(["cmd", "/c", "BUILD.bat"], cwd=ROOT, env=env)
+    # voller Pfad – sonst findet cmd die Datei je nach Aufrufer nicht
+    p = subprocess.run(["cmd", "/c", os.path.join(ROOT, "BUILD.bat")], cwd=ROOT, env=env)
     if p.returncode != 0:
         fehler(f"BUILD.bat ist fehlgeschlagen (Exit-Code {p.returncode}).")
     ok("BUILD.bat erfolgreich")
