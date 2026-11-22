@@ -668,9 +668,10 @@ def story():
 
     # Updates
     A(Heading("Updates"))
-    A(P("Solange kein GitHub-Projekt eingetragen ist, sucht das Programm nirgends nach Updates. Wer neue "
-        "Versionen über GitHub bekommt, trägt im Tab <b>Einstellungen</b> in der Karte <b>Update</b> das "
-        "Projekt ein (benutzer/projekt). Dann sieht das Programm beim Start still nach (abschaltbar), und "
+    A(P("Die neueste Version gibt es immer unter "
+        "<b>https://github.com/98koellnertd-code/Essens-Plan/releases/latest</b>. Dieses Projekt ist im Tab "
+        "<b>Einstellungen</b> in der Karte <b>Update</b> schon eingetragen; der Knopf <b>Download-Seite</b> "
+        "öffnet die Seite. Das Programm sieht beim Start still nach (abschaltbar), und "
         "<b>Nach Updates suchen</b> (auch im Menü <b>Hilfe</b>) findet die neueste Version, lädt sie nach "
         "Rückfrage und tauscht die EXE aus. Klappt der Tausch nicht, bleibt die bisherige EXE erhalten. Deine "
         "Daten bleiben in jedem Fall unberührt."))

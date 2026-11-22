@@ -1846,7 +1846,7 @@ class App(tk.Tk):
         e = ttk.Entry(u, textvariable=self.repo_var, width=1)
         e.pack(fill="x", pady=(S(3), S(6)))
         tip(e, "Format: benutzer/projekt – eine GitHub-Adresse wird auch erkannt.\n"
-                   "Leer lassen, wenn du keine Updates über GitHub beziehen willst.")
+                   f"Voreingestellt ist das offizielle Projekt {utils.DEFAULT_CONFIG['update_repo']}.")
         cb = ttk.Checkbutton(u, text="Beim Start still nach Updates sehen", variable=self.uauto_var)
         cb.pack(anchor="w")
         tip(cb, "Fragt einmal beim Programmstart bei GitHub nach und meldet sich nur,\n"
@@ -1860,6 +1860,9 @@ class App(tk.Tk):
         self.lib_btn = Btn(reihe, "Bibliotheken prüfen", self.check_libs, kind="light", icon="📦",
                            tip="Vergleicht die wichtigen Bibliotheken mit den neuesten Ausgaben")
         self.lib_btn.pack(side="left", padx=(S(8), 0))
+        Btn(reihe, "Download-Seite", self._download_seite, kind="light", icon="🌐",
+            tip="Öffnet die Seite mit der neuesten Version zum Herunterladen:\n"
+                + self._download_url()).pack(side="left", padx=(S(8), 0))
 
         py = up.python_info()
         ui.wrap_label(u, f"Installiert: v{APP_VERSION}  ·  Python {py['version']}  ·  "
@@ -1868,6 +1871,13 @@ class App(tk.Tk):
         self.up_lbl = ui.wrap_label(u, "", bg=C["surface"], fg=C["text"], font=F["small_bold"])
         self.up_lbl.pack(fill="x", pady=(S(2), 0))
         self.up_prog = ttk.Progressbar(u, mode="determinate", maximum=100)
+
+    def _download_url(self):
+        repo = up.repo_name(self.cfg.get("update_repo", "")) or utils.DEFAULT_CONFIG["update_repo"]
+        return up.RELEASE_SEITE.format(repo=repo)
+
+    def _download_seite(self):
+        webbrowser.open(self._download_url())
 
     def _up_status(self, text, laden=None):
         """Zeile in der Update-Karte. laden = Prozent, None blendet den Balken aus."""

@@ -26,6 +26,7 @@ except Exception:
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 DIST = os.path.join(ROOT, "dist")
+STANDARD_REPO = "98koellnertd-code/Essens-Plan"   # wie update_repo in utils.DEFAULT_CONFIG
 EXE, ZIP, PDF = "Essens-Plan.exe", "Essens-Plan.zip", "Anleitung.pdf"
 DATEIEN = (EXE, ZIP, PDF)             # Reihenfolge = Reihenfolge in Summen und Tabelle
 SUMMEN = "SHA256SUMS.txt"
@@ -236,8 +237,11 @@ def changelog_text(version):
     return inhalt
 
 
-def notiz_schreiben(version, summen):
-    zeilen = ["## Prüfsummen (SHA256)", "",
+def notiz_schreiben(version, summen, repo=""):
+    repo = repo or STANDARD_REPO
+    zeilen = ["## Download", "",
+              f"Immer die neueste Version: https://github.com/{repo}/releases/latest", "",
+              "## Prüfsummen (SHA256)", "",
               "| Datei | Bytes | SHA256 |", "|---|---|---|"]
     for n in DATEIEN:
         zeilen.append(f"| {n} | {os.path.getsize(os.path.join(DIST, n))} | `{summen[n]}` |")
@@ -350,7 +354,7 @@ def main():
     summen = summen_pruefen(sp, DIST)
 
     schritt(4, "Release-Notiz schreiben")
-    notiz = notiz_schreiben(version, summen)
+    notiz = notiz_schreiben(version, summen, repo)
 
     if not a.publish:
         print(f"\nTROCKENLAUF FERTIG. Zum Veröffentlichen: py -3 scripts\\release.py --publish "

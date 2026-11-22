@@ -276,11 +276,12 @@ einem Neustart des Programms.
 
 UPDATES
 -------
-Solange kein GitHub-Projekt eingetragen ist, sucht das Programm
-nirgends nach Updates. Wer neue Versionen über GitHub bekommt,
-trägt im Tab "Einstellungen" in der Karte "Update" das GitHub-
-Projekt ein (benutzer/projekt). Dann sieht das Programm beim
-Start still nach (abschaltbar), und "Nach Updates suchen" (auch
+Die neueste Version gibt es immer hier:
+   https://github.com/98koellnertd-code/Essens-Plan/releases/latest
+Dieses Projekt ist im Tab "Einstellungen" in der Karte "Update"
+schon eingetragen; der Knopf "Download-Seite" öffnet die Seite.
+Das Programm sieht beim Start still nach (abschaltbar), und
+"Nach Updates suchen" (auch
 im Menü "Hilfe") findet die neueste Version, lädt sie nach
 Rückfrage und tauscht die EXE aus. Klappt der Tausch nicht,
 bleibt die bisherige EXE erhalten. Deine Daten bleiben in jedem
